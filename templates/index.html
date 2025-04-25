@@ -15,10 +15,10 @@
     <div id="submit">
         <button id="submit-button">Generate Graph</button>
     </div>
-    <div id="visualization"> 
-        <p> Test </p>
+    <div class="plot-container">
+        <img src="{{ url_for('gen_plot') }}" alt="Plot">
     </div>
-
+<!-- 
 <script>
     slider1 = document.getElementById("slope");
     slider2 = document.getElementById("intercept");
@@ -39,14 +39,14 @@
         })
        }).then(response => response.json())
        .then(data => {
-        
+
        })
     });
 
     // Best to have a submit button that regenerates graph 
 
 
-</script>
+</script> -->
 
 </body>
 </html>
