@@ -13,14 +13,16 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route("/gen_plot")
+@app.route("/gen_plot", methods=['GET', 'POST'])
 def gen_plot():
+    print("HEllo!")
     fig = create_figure()
     output = io.BytesIO()
     FigureCanvas(fig).print_png(output)
     return Response(output.getvalue(), mimetype='image/png')
 
 def create_figure():
+    print("Creating figure")
     fig, ax = plt.subplots(figsize=(10, 6))
     # Find x and y... ?
     x = np.linspace(0, 10, 100)
