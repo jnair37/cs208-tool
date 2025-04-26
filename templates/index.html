@@ -2,21 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Epsilon Visualizer</title>
 </head>
 <body>
-   <h1>Before beginning, find your epsilon!</h1>
-    <div id="slider1">
-        How much do you like filling out research surveys? <input type="range" id="slope" min="0" max="100" value="50">
-    </div>
-    <div id="slider2">
-        How much privacy do you like? <input type="range" id="intercept" min="0" max="100" value="50">
-    </div>
-    <div id="submit">
-        <button id="submit-button">Generate Graph</button>
-    </div>
-    <div class="plot-container">
-        <img id="plot-image" src="{{ url_for('plot_png') }}?slope={{ 1.0 }}&intercept={{ 1.0 }}" alt="Plot">
+    <div class="container">
+        <header>
+            <h1>Find your epsilon</h1>
+        </header>
+        <h2>Something something</h2>
+        <div id="slider1">
+            How much do you like filling out research surveys? <input type="range" id="slope" min="0" max="100" value="50">
+        </div>
+        <div id="slider2">
+            How much privacy do you like? <input type="range" id="intercept" min="0" max="100" value="50">
+        </div>
+        <div id="submit">
+            <button id="submit-button">Generate Graph</button>
+        </div>
+        <div class="plot-container">
+            <img id="plot-image" src="{{ url_for('plot_png') }}?slope={{ 50.0 }}&intercept={{ 50.0 }}" alt="Plot">
+        </div>
     </div>
  
 <script>
