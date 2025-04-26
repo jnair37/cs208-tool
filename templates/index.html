@@ -16,18 +16,20 @@
         <button id="submit-button">Generate Graph</button>
     </div>
     <div class="plot-container">
-        <img src="{{ url_for('gen_plot') }}" alt="Plot">
+        <img id="plot-image" src="{{ url_for('gen_plot') }}?slope={{ slope }}&intercept={{ intercept }}" alt="Plot">
     </div>
  
 <script>
-    slider1 = document.getElementById("slope");
-    slider2 = document.getElementById("intercept");
+    //slider1 = document.getElementById("slope");
+    //slider2 = document.getElementById("intercept");
     button = document.getElementById("submit-button");
-    
+    //console.log(slider1.value);
 
     button.addEventListener('click', function() {
-       const slope = slider1.value;
-       const intercept = slider2.value; 
+       const slope = document.getElementById("slope").value;
+       const intercept = document.getElementById("intercept").value; 
+       console.log(slope);
+       console.log(intercept);
        fetch('/gen_plot', {
         method:'POST',
         headers: {
@@ -37,10 +39,15 @@
             slope: slope,
             intercept: intercept
         })
-       }).then(response => response.json())
-       .then(data => {
-
        })
+       .then(response => response.json())
+       .then(data => {
+        const plotImage = document.getElementById('plot-image');
+        plotImage.src = data.plot_url;
+       })
+       .catch((error) => {
+        console.error('Error:', error);
+    });
     });
 
     // Best to have a submit button that regenerates graph 
