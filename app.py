@@ -13,6 +13,18 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route("/users")
+def users():
+    return render_template('users.html')
+
+@app.route("/researchers")
+def researchers():
+    return render_template('researchers.html')
+
+@app.route("/aboutdp")
+def aboutdp():
+    return render_template('aboutdp.html')
+
 @app.route("/gen_plot", methods=['GET', 'POST'])
 def gen_plot():
     data = request.json

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Epsilon Visualizer</title>
+</head>
+<body>
+
+  <div class="navbar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">For Users</a></li>
+        <li><a href="/researchers">For Researchers</a></li>
+        <li><a href="/aboutdp">About DP</a></li>
+    </ul>
+  </div>
+
+    <div class="container">
+        <header>
+            <h1>Find your epsilon</h1>
+        </header>
+        <h2>Something something</h2>
+        <div id="slider1">
+            How much do you like filling out research surveys? <input type="range" id="slope" min="0" max="100" value="50">
+        </div>
+        <div id="slider2">
+            How much privacy do you like? <input type="range" id="intercept" min="0" max="100" value="50">
+        </div>
+        <div id="submit">
+            <button id="submit-button">Generate Graph</button>
+        </div>
+        <div class="plot-container">
+            <img id="plot-image" src="{{ url_for('plot_png') }}?slope={{ 50.0 }}&intercept={{ 50.0 }}" alt="Plot">
+        </div>
+    </div>
+ 
+<script>
+    //slider1 = document.getElementById("slope");
+    //slider2 = document.getElementById("intercept");
+    button = document.getElementById("submit-button");
+    //console.log(slider1.value);
+
+    button.addEventListener('click', function() {
+       const slope = document.getElementById("slope").value;
+       const intercept = document.getElementById("intercept").value; 
+       console.log(slope);
+       console.log(intercept);
+       fetch('/gen_plot', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            slope: slope,
+            intercept: intercept
+        })
+       })
+       .then(response => response.json())
+       .then(data => {
+        const plotImage = document.getElementById('plot-image');
+        plotImage.src = data.plot_url;
+       })
+       .catch((error) => {
+        console.error('Error:', error);
+    });
+    });
+
+    // Best to have a submit button that regenerates graph 
+
+
+</script>
+
+</body>
+</html>
