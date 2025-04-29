@@ -6,6 +6,9 @@ import numpy as np
 import math
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
+# Import the epsilon_optimizer module directly
+from epsilon_optimizer import find_optimal_epsilon
+
 matplotlib.use('Agg')
 
 app = Flask(__name__)
@@ -54,8 +57,8 @@ def plot_png():
     return Response(output.getvalue(), mimetype='image/png')
 
 
-def privacy_risk(epsilon):
-    return 1/(1 + math.e**(-1*epsilon))
+def privacy_risk(epsilon, n=1000):
+    return 1/(1 + (n-1)*math.e**(-1*epsilon))
 
 def create_figure(epsilon):
     plt.close()
@@ -72,6 +75,24 @@ def create_figure(epsilon):
     ax.set_ylabel("y")
     ax.set_title(f"Epsilon= {epsilon}; privacy risk={privacy_risk(epsilon)}")
     return fig
+
+
+@app.route("/calculate_optimal", methods=['POST'])
+def calculate_optimal():
+    data = request.json
+    epsilon_a = float(data.get('epsilon_a', 0.01))
+    epsilon_b = float(data.get('epsilon_b', 2.0))
+    N = int(data.get('N', 100))
+    
+    try:
+        optimal_epsilon, max_welfare = find_optimal_epsilon(epsilon_a, epsilon_b, N)
+        return jsonify({
+            'optimal_epsilon': optimal_epsilon,
+            'max_welfare': max_welfare
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
+
 
 # def hello():
 #     return "Hello, Flask!"
