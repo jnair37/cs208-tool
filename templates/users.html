@@ -18,20 +18,20 @@
 
     <div class="container">
         <header>
-            <h1>Find your epsilon</h1>
+            <h1>Epsilon And You</h1>
         </header>
-        <h2>Something something</h2>
+        <h2>Explore disclosure risk at each value of epsilon by moving the slider below - click "Generate Graph" to visualize. When you find the maximum epsilon value (maximum risk) you are comfortable with, click the "I've found my epsilon" button below.</h2>
         <div id="slider1">
-            How much do you like filling out research surveys? <input type="range" id="slope" min="0" max="100" value="50">
+            Epsilon <input type="range" id="epsilon" min="0" max="5" value="2.5" step="0.05">
         </div>
-        <div id="slider2">
+        <!-- <div id="slider2">
             How much privacy do you like? <input type="range" id="intercept" min="0" max="100" value="50">
-        </div>
+        </div> -->
         <div id="submit">
             <button id="submit-button">Generate Graph</button>
         </div>
         <div class="plot-container">
-            <img id="plot-image" src="{{ url_for('plot_png') }}?slope={{ 50.0 }}&intercept={{ 50.0 }}" alt="Plot">
+            <img id="plot-image" src="{{ url_for('plot_png') }}?epsilon={{ 2.5 }}" alt="Plot">
         </div>
     </div>
  
@@ -42,18 +42,17 @@
     //console.log(slider1.value);
 
     button.addEventListener('click', function() {
-       const slope = document.getElementById("slope").value;
-       const intercept = document.getElementById("intercept").value; 
-       console.log(slope);
-       console.log(intercept);
+       const epsilon = document.getElementById("epsilon").value;
+       //const intercept = document.getElementById("intercept").value; 
+       console.log(epsilon);
+       //console.log(intercept);
        fetch('/gen_plot', {
         method:'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            slope: slope,
-            intercept: intercept
+            epsilon: epsilon
         })
        })
        .then(response => response.json())

@@ -154,6 +154,7 @@
 
   .home-setup a {
     background-color: #3498db;
+    text-decoration: none;
     color: white;
     border: none;
     padding: 10px 20px;
