@@ -20,7 +20,22 @@
         <header>
             <h1>Epsilon And You</h1>
         </header>
-        <h2>Explore disclosure risk at each value of epsilon by moving the slider below - click "Generate Graph" to visualize.</h2>
+        <h2>About</h2>
+        <details>
+          <summary>What is differential privacy?</summary>
+          <p>Differential privacy is a technique that the makers of this study are using. If the data is released or queried without restrictions, there is a risk of re-identifying individual participants. To avoid this, the study designers are adding noise to the data to help prevent you from being re-identified in statistical releases.</p>
+        </details>
+        <details>
+          <summary>What is epsilon?</summary>
+          <p>Epsilon is a value that researchers can set for their study, that determines the amount of noise and the risk of disclosure. Lower epsilons mean less risk of disclosure, while higher epsilons mean more risk but less noise. The designers of this study will set a specific epsilon.</p>  
+        </details>
+        <details>
+          <summary>What can I do?</summary>
+          <p>To understand whether to participate in this study, you can get a senes for the epsilon you are comfortable with in the below interactive graph. If the maximum epsilon/risk you are comfortable with is below the epsilon of this study, don't participate.</p>  
+        </details>
+
+        <h2>Risk Assessment</h2>
+        <p>Explore disclosure risk at each value of epsilon by moving the slider below - click "Generate Graph" to visualize.</p>
         <div id="slider1">
             Epsilon <input type="range" id="epsilon" min="0" max="10" value="2.5" step="0.05">
         </div>
