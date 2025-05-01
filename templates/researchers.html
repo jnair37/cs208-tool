@@ -20,7 +20,8 @@
     <div class="container">
         <header>
             <h1>Epsilon Optimizer</h1>
-            <p class="subtitle">Find the optimal epsilon value for your differential privacy parameters</p>
+            <p class="subtitle">We're looking to help researchers like you balance your users' need for privacy with your need for good data. We do that by optimizing a variable called epsilon, which determines noise and is positively correlated to privacy risk, according to your constraints.</p>
+            <p class="subtitle">Find the optimal epsilon value for your parameters below.</p>
         </header>
         
         <div class="controls">
@@ -49,6 +50,10 @@
             <button id="calculate-button">Calculate Optimal Epsilon</button>
         </div>
         
+        <div class="plot-container">
+            <img id="plot-image" src="{{ url_for('plot_welfare_png') }}?epsilon={{ 2.5 }}" alt="Plot">
+        </div>
+
         <div class="results">
             <h2>Results</h2>
             <div id="optimal-epsilon" class="result-box">
@@ -172,6 +177,34 @@
                 document.getElementById('max-welfare-value').textContent = 'An error occurred while calculating.';
             });
         });
+
+        calculateButton.addEventListener('click', function() {
+            const epsilon_a = document.getElementById("epsilon_a").value;
+            const epsilon_b = document.getElementById("epsilon_b").value;
+            const n = document.getElementById("num_subjects").value;
+            //const intercept = document.getElementById("intercept").value; 
+            console.log(epsilon);
+            //console.log(intercept);
+            fetch('/gen_w_plot', {
+             method:'POST',
+             headers: {
+                 'Content-Type': 'application/json',
+             },
+             body: JSON.stringify({
+                 epsilon_a: epsilon_a,
+                 epsilon_b: epsilon_b,
+                 n:n
+             })
+            })
+            .then(response => response.json())
+            .then(data => {
+             const plotImage = document.getElementById('plot-image');
+             plotImage.src = data.plot_url;
+            })
+            .catch((error) => {
+             console.error('Error:', error);
+         });
+         });
     </script>
 </body>
 </html> 

@@ -210,3 +210,21 @@ li {
         margin: 10px 0;
     }
 } 
+
+ /* Plot Container */
+ .plot-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .plot-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
