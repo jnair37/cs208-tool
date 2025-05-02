@@ -102,7 +102,7 @@ def create_w_figure(max_epsilon, epsilon_a, epsilon_b, n):
     print(len(x_vals))
     print(len(y_vals))
     z_vals = list(map(lambda x, y: calculate_W(x, epsilon_a, epsilon_b, y), x_vals, y_vals))
-    ax.scatter(x_vals, y_vals, z_vals)
+    ax.scatter(x_vals, y_vals, z_vals, c=z_vals, cmap="viridis")
     tw = calculate_W(max_epsilon, epsilon_a, epsilon_b, n)
     ax.scatter([max_epsilon], [n], [tw], color='red')
     ax.set_xlabel("Epsilon")
