@@ -125,9 +125,25 @@ def create_figure(epsilon):
     y_vals = privacy_risk(x_vals)
     ax.plot(x_vals, y_vals, '--')
     ax.plot([epsilon], [privacy_risk(epsilon)], marker='o', color='red', markersize=10)
-    ax.set_xlabel("x")
-    ax.set_ylabel("y")
+    
+    # Add grid and ticks
+    ax.grid(True, linestyle='--', alpha=0.7)
+    ax.set_xticks(np.arange(0, 11, 1))  # Major ticks every 1 unit
+    ax.set_yticks(np.arange(0, 1.1, 0.1))  # Major ticks every 0.1 unit
+    
+    # Add minor ticks
+    ax.minorticks_on()
+    ax.grid(True, which='minor', linestyle=':', alpha=0.4)
+    
+    # Set axis labels and title
+    ax.set_xlabel("Chosen Epsilon")
+    ax.set_ylabel("Privacy Risk")
     ax.set_title(f"Epsilon= {epsilon}; privacy risk={privacy_risk(epsilon)}")
+    
+    # Set axis limits to ensure we see the full range
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 1)
+    
     return fig
 
 
