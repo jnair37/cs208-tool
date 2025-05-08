@@ -138,7 +138,7 @@ def create_figure(epsilon):
     # Set axis labels and title
     ax.set_xlabel("Chosen Epsilon")
     ax.set_ylabel("Privacy Risk")
-    ax.set_title(f"Epsilon= {epsilon}; privacy risk={privacy_risk(epsilon)}")
+    ax.set_title(f"Epsilon= {epsilon}; privacy risk={'{:.2%}'.format(privacy_risk(epsilon))}", fontsize=30, fontname='Segoe UI')
     
     # Set axis limits to ensure we see the full range
     ax.set_xlim(0, 10)
