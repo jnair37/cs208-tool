@@ -210,7 +210,7 @@
                             <span class="tooltiptext">Think of epsilon like a privacy budget - lower numbers mean more privacy protection, higher numbers mean less protection but more accurate results.</span>
                         </span>
                     </li>
-                    <li><strong>Privacy Risk</strong>: The chance that someone could learn something about you from the study's results.
+                    <li><strong>Privacy Risk</strong>: In the worst-case, the chance that someone could identify you as having provided a certain answer, based on the study's results.
                         <span class="tooltip">ℹ️
                             <span class="tooltiptext">This is shown on a scale from 0 (no risk) to 1 (maximum risk). For example, 0.5 means there's a 50% chance of potential privacy disclosure.</span>
                         </span>
@@ -232,9 +232,27 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="explanation-box">
+                <details>
+                    <summary> (Advanced) How are you calculating the privacy risk?</summary>
+                    <p>The privacy risk is a global upper bound on risk of identification in a subset to answer a particular query under the change-one rule:</p>
+                    <div class="formula">
+                        \[
+                        p \leq \frac{1}{(1 + (n-1)e^{-\varepsilon})}
+                        \]
+                    </div>
+                    <p>This formula is calculated according to <a href="https://git.gnunet.org/bibliography.git/plain/docs/Choosing-%CE%B5-2011Lee.pdf">Lee and Clifton's 2011 paper</a> and <a href="https://eprint.iacr.org/2021/1125.pdf">Mehner's 2021 follow-up</a>, which simplifies the formula under worst-case bounds for the ratio of v(maximum change) and f(global function sensitivity) (v/f <= 1). These two papers prove an upper bound on identification risk in terms of an epsilon value and a number of participants n. Specifically, the formula sets out to calculate the risk of an identification attack given the change-one rule.</p>
+                    <p>Assumptions: This privacy risk calculation is built on a prior probability distribution -- the odds that a potential adversary could correctly guess prior to receiving the data -- and a posterior Bayesian inference update given a query itself. </p>
+                    <p></p>
+                </details>
+            </div>
         </div>
     </div>
  
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>    
 <script>
     //slider1 = document.getElementById("slope");
     //slider2 = document.getElementById("intercept");
