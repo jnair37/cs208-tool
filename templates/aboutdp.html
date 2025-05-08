@@ -17,49 +17,21 @@
     <div class="container">
         <h1 id="epsilon-optimizer">Epsilon Visualizer + Optimizer</h1>
         <p>This tool both visualizes how epsilon works for users and calculates the optimal epsilon value that maximizes the welfare function for differential privacy parameters.</p>
-        <h2 id="installation">Installation</h2>
-        <ol>
-        <li><p>Create a virtual environment (recommended):</p>
-        <pre><code class="lang-bash">python -m venv venv
-        source venv/bin/<span class="hljs-built_in">activate</span>  <span class="hljs-comment"># On macOS/Linux</span>
-        </code></pre>
-        </li>
-        <li><p>Install the required packages:</p>
-        <pre><code class="lang-bash">pip <span class="hljs-keyword">install</span> -r requirements.txt
-        </code></pre>
-        </li>
-        </ol>
-        <h2 id="running-the-application">Running the Application</h2>
-        <ol>
-        <li><p>Make sure you&#39;re in the epsilon_optimizer directory:</p>
-        <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> cs208-tool/epsilon_optimizer
-        </code></pre>
-        </li>
-        <li><p>Run the Flask application:</p>
-        <pre><code class="lang-bash"><span class="hljs-keyword">python</span> app.<span class="hljs-keyword">py</span>
-        </code></pre>
-        </li>
-        <li><p>Open your web browser and go to:</p>
-        <pre><code><span class="hljs-symbol">http:</span><span class="hljs-comment">//127.0.0.1:5001</span>
-        </code></pre></li>
-        </ol>
-        <h2 id="how-it-works">How It Works</h2>
-        <p>The tool calculates the optimal epsilon value that maximizes the welfare function:</p>
-        <p>[
-        W = \int_{\epsilon_a}^{\epsilon<em>b} \left( \frac{1}{x} \right) \left( 1 - \frac{1}{N \epsilon} \right) \int</em>{\max(\epsilon, \epsilon_a)}^{\epsilon<em>b} \frac{1}{y} \, dy \, dx + N \int</em>{\epsilon}^{\epsilon_b} \left( 1 - \frac{\epsilon}{x} \right) \, dx
-        ]</p>
-        <p>Where:</p>
+        
+        <h2>Meet the Team</h1>
+        <p>This project was created by Vihaan Gupta, Jade Nair, Julia Shephard, and Natalia Siwek for Harvard's CS208 class.</p>
+
+        <h2>Codebase</h2>
+        <p>The code for this project can be found on GitHub at https://github.com/jnair37/cs208-tool.</p>
+
+        <h2>Learn More</h1>
+        <p>To learn more, we recommend the following resources:</p>
         <ul>
-        <li>εₐ (epsilon_a) is the minimum epsilon value</li>
-        <li>εᵦ (epsilon_b) is the maximum epsilon value</li>
-        <li>N is the number of subjects in the study</li>
+            <li>Taking CS208: Applied Privacy for Data Science!</li>
+            <li><a href="https://opendp.org/">OpenDP</a></li>
+            <li>Hands-On Differential Privacy by Cowan, Shoemate, and Pereira</li>
         </ul>
-        <h2 id="parameters">Parameters</h2>
-        <ul>
-        <li><strong>Minimum Epsilon (εₐ)</strong>: The lower bound of the epsilon distribution (default: 0.01)</li>
-        <li><strong>Maximum Epsilon (εᵦ)</strong>: The upper bound of the epsilon distribution (default: 2.0)</li>
-        <li><strong>Number of Subjects (N)</strong>: The number of participants in the study (default: 100) </li>
-        </ul>
+
     </div>
     
 </body>
