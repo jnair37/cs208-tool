@@ -236,14 +236,14 @@
             <div class="explanation-box">
                 <details>
                     <summary> (Advanced) How are you calculating the privacy risk?</summary>
-                    <p>The privacy risk is a global upper bound on risk of identification in a subset to answer a particular query under the change-one rule:</p>
+                    <p>The privacy risk is a global upper bound on risk of membership identification in a subset that answers a particular query, under the change-one rule:</p>
                     <div class="formula">
                         \[
                         p \leq \frac{1}{(1 + (n-1)e^{-\varepsilon})}
                         \]
                     </div>
-                    <p>This formula is calculated according to <a href="https://git.gnunet.org/bibliography.git/plain/docs/Choosing-%CE%B5-2011Lee.pdf">Lee and Clifton's 2011 paper</a> and <a href="https://eprint.iacr.org/2021/1125.pdf">Mehner's 2021 follow-up</a>, which simplifies the formula under worst-case bounds for the ratio of v(maximum change) and f(global function sensitivity) (v/f <= 1). These two papers prove an upper bound on identification risk in terms of an epsilon value and a number of participants n. Specifically, the formula sets out to calculate the risk of an identification attack given the change-one rule.</p>
-                    <p>Assumptions: This privacy risk calculation is built on a prior probability distribution -- the odds that a potential adversary could correctly guess prior to receiving the data -- and a posterior Bayesian inference update given a query itself. </p>
+                    <p>This formula is calculated according to <a href="https://git.gnunet.org/bibliography.git/plain/docs/Choosing-%CE%B5-2011Lee.pdf">Lee and Clifton's 2011 paper</a> and <a href="https://eprint.iacr.org/2021/1125.pdf">Mehner's 2021 follow-up</a>, which simplifies the formula to the above under worst-case bounds for the ratio of two additional variables (v(maximum change) and f(global function sensitivity) (v/f <= 1)). These two papers prove an upper bound on identification risk given a query about a specific datapoint, in terms of an epsilon value and a number of participants n. Specifically, the formula sets out to calculate the risk of an identification attack if an attacker were to query the data for a subset relative to a sensitive piece of information.</p>
+                    <p>Assumptions: For now, we assume n=1000 participants for demonstration purposes. In the future, we may allow researchers to ensure the tool reflects their specific target number of participants when it is displayed to their users. The privacy risk calculation is built on a prior probability distribution -- the odds that a potential adversary could correctly guess prior to receiving the data -- and a posterior Bayesian inference update given the query result. </p>
                     <p></p>
                 </details>
             </div>
