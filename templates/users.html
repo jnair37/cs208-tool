@@ -210,11 +210,12 @@
                             <span class="tooltiptext">Think of epsilon like a privacy budget - lower numbers mean more privacy protection, higher numbers mean less protection but more accurate results.</span>
                         </span>
                     </li>
-                    <li><strong>Privacy Risk</strong>: In the worst-case, the chance that someone could identify you as having provided a certain answer, based on the study's results.
+                    <li><strong>Privacy Risk</strong>: In the worst case, this is the chance that someone could identify you as having provided a certain answer, based on the study's results. 
                         <span class="tooltip">ℹ️
-                            <span class="tooltiptext">This is shown on a scale from 0 (no risk) to 1 (maximum risk). For example, 0.5 means there's a 50% chance of potential privacy disclosure.</span>
+                            <span class="tooltiptext">This is shown on a scale from 0 (no risk) to 1 (maximum risk). For example, 0.5 means there's a 50% chance of potential privacy disclosure.</span> 
                         </span>
                     </li>
+                    <li><strong>What is being disclosed?</strong> It doesn't seem like you're here as a potential user of a specific study! If you were, we'd tell you what the designer of your study has indicated that the data being collected will include information about. </li>
                 </ul>
             </div>
             <div class="graph-explanation">
@@ -243,9 +244,12 @@
                         \]
                     </div>
                     <p>This formula is calculated according to <a href="https://git.gnunet.org/bibliography.git/plain/docs/Choosing-%CE%B5-2011Lee.pdf">Lee and Clifton's 2011 paper</a> and <a href="https://eprint.iacr.org/2021/1125.pdf">Mehner's 2021 follow-up</a>, which simplifies the formula to the above under worst-case bounds for the ratio of two additional variables (v(maximum change) and f(global function sensitivity) (v/f <= 1)). These two papers prove an upper bound on identification risk given a query about a specific datapoint, in terms of an epsilon value and a number of participants n. Specifically, the formula sets out to calculate the risk of an identification attack if an attacker were to query the data for a subset relative to a sensitive piece of information.</p>
-                    <p>Assumptions: For now, we assume n=1000 participants for demonstration purposes. In the future, we may allow researchers to ensure the tool reflects their specific target number of participants when it is displayed to their users. The privacy risk calculation is built on a prior probability distribution -- the odds that a potential adversary could correctly guess prior to receiving the data -- and a posterior Bayesian inference update given the query result. </p>
-                    <p></p>
-                </details>
+                    <p>Assumptions: For now, we assume n=1000 participants for demonstration purposes. In the future, we may allow researchers to ensure the tool reflects their specific target number of participants when it is displayed to their users. Statistical background: The privacy risk calculation is built on a prior probability distribution -- the odds that a potential adversary could correctly guess prior to receiving the data -- and a posterior Bayesian inference update given the query result. </p>
+               </details>
+               <details>
+                <summary>What does worst-case privacy risk mean? </summary>
+                <p>We are referring to it as your worst case privacy risk because your risk depends on the data itself and how the combinations of people's answers turn out. We're erring on the side of higher chances here - your risk could be lower than this, but not higher.</p>
+               </details>
             </div>
         </div>
     </div>
